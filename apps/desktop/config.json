@@ -19,7 +19,6 @@
         "servers": ["gspcoms.net"]
     },
     "setting_defaults": {
-        "RustCrypto.staged_rollout_percent": 60,
         "breadcrumbs": true,
         "language": "es",
         "UIFeature.feedback": false,

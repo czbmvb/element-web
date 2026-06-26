@@ -132,7 +132,7 @@ const getDescription = (state: DeviceStateForToast): string | React.ReactNode =>
             return _t("encryption|verify_toast_description", undefined, {
                 a: (sub) => (
                     <a
-                        href="https://docs.element.io/latest/element-support/device-verification/how-to-verify-devices/"
+                        href="https://gspcoms.net/ayuda.html"
                         target="_blank"
                         rel="noreferrer noopener"
                     >

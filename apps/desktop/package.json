@@ -1,18 +1,18 @@
 {
-    "name": "element-desktop",
-    "productName": "Element",
+    "name": "gspcoms-chat",
+    "productName": "GSPCOMS Chat",
     "main": "lib/electron-main.js",
     "exports": "./lib/electron-main.js",
     "version": "1.12.26",
-    "description": "Element: the future of secure communication",
+    "description": "GSPCOMS Chat — comunicación cifrada de extremo a extremo",
     "author": {
-        "name": "Element",
-        "email": "support@element.io"
+        "name": "GSPCOMS",
+        "email": "soporte@gspcoms.net"
     },
-    "homepage": "https://element.io",
+    "homepage": "https://gspcoms.net",
     "repository": {
         "type": "git",
-        "url": "https://github.com/vector-im/element-web"
+        "url": "https://github.com/czbmvb/element-web"
     },
     "license": "SEE LICENSE IN README.md",
     "type": "module",
