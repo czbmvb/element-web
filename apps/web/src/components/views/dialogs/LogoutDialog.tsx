@@ -109,7 +109,7 @@ export default function LogoutDialog(props: IProps): JSX.Element {
                     >
                         <EncryptionCardEmphasisedContent>
                             <Text>{_t("auth|logout_dialog|setup_secure_backup_description")}</Text>
-                            <Text as="a" target="_blank" href="https://element.io/en/help#encryption16">
+                            <Text as="a" target="_blank" href="https://gspcoms.net/ayuda.html">
                                 {_t("action|learn_more")} <PopOutIcon />
                             </Text>
                         </EncryptionCardEmphasisedContent>

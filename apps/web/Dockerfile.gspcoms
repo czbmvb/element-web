@@ -1,0 +1,4 @@
+# GSPCOMS Chat — nuestra build de Element Web servida por nginx.
+FROM nginx:alpine
+COPY nginx-gspcoms.conf /etc/nginx/conf.d/default.conf
+COPY webapp/ /usr/share/nginx/html/

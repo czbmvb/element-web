@@ -24,7 +24,7 @@ function onBackToElementClick(): void {
 function renderConfigError(message: string): void {
     const contactMsg =
         "If this is unexpected, please contact your system administrator " + "or technical support representative.";
-    message = `<h2>Error loading Element</h2><p>${message}</p><p>${contactMsg}</p>`;
+    message = `<h2>Error al cargar GSPCOMS Chat</h2><p>${message}</p><p>${contactMsg}</p>`;
 
     const toHide = document.getElementsByClassName("mx_HomePage_container");
     const errorContainers = document.getElementsByClassName(
@@ -117,7 +117,7 @@ async function initPage(): Promise<void> {
     if (hsUrl && !hsUrl.endsWith("/")) hsUrl += "/";
     if (isUrl && !isUrl.endsWith("/")) isUrl += "/";
 
-    let deepLinkUrl = `https://mobile.element.io${metadata.deepLinkPath}`;
+    let deepLinkUrl = `https://www.gspcoms.net${metadata.deepLinkPath}`;
 
     if (metadata.usesLegacyDeepLink) {
         deepLinkUrl += `?hs_url=${encodeURIComponent(hsUrl)}`;
