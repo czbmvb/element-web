@@ -231,9 +231,9 @@ jobs:
               if: contains(inputs.targets, 'deb')
               working-directory: apps/desktop
               run: |
-                  test -f ./dist/element-desktop*$ARCH.deb
+                  test -f ./dist/*$ARCH.deb  # GSPCOMS: el paquete se llama gspcoms-chat_*, no element-desktop*
 
-                  DEB_LISTING=$(dpkg-deb --fsys-tarfile ./dist/element-desktop*.deb | tar -tv)
+                  DEB_LISTING=$(dpkg-deb --fsys-tarfile ./dist/*.deb | tar -tv)
                   echo "deb listing: "
                   echo "$DEB_LISTING"
                   ! echo "$DEB_LISTING" | grep '^h'
