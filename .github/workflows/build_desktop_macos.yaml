@@ -206,13 +206,13 @@ jobs:
               if: contains(inputs.targets, 'zip')
               working-directory: apps/desktop
               run: |
-                  test -f ./dist/Element*-mac.zip
+                  test -f ./dist/*-mac.zip  # GSPCOMS: nuestro producto no se llama Element
 
             - name: Assert dmg is present
               if: contains(inputs.targets, 'dmg')
               working-directory: apps/desktop
               run: |
-                  test -f ./dist/Element*.dmg
+                  test -f ./dist/*.dmg
 
     test:
         name: Test macOS Universal
