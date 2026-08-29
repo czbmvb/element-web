@@ -246,7 +246,7 @@ jobs:
               run: |
                   test -f ./dist/*.tar.gz  # GSPCOMS: nuestro paquete no se llama element-desktop
 
-                  TAR_GZ_LISTING=$(tar -tvf ./dist/element-desktop*.tar.gz)
+                  TAR_GZ_LISTING=$(tar -tvf ./dist/*.tar.gz)
                   echo "tar.gz listing: "
                   echo "$TAR_GZ_LISTING"
                   ! echo "$TAR_GZ_LISTING" | grep '^h'
