@@ -389,7 +389,9 @@
         "verify_email_explainer": "Necesitamos saber que es usted antes de restablecer su contraseña. Haga clic en el enlace del correo electrónico que acabamos de enviar a <b>%(email)s</b>",
         "verify_email_heading": "Verifique su correo electrónico para continuar",
         "sign_in_manually": "Iniciar sesión manualmente",
-        "sign_in_with_qr": "Iniciar sesión con código QR"
+        "sign_in_with_qr": "Iniciar sesión con código QR",
+        "registration_rate_limited": "Demasiados intentos en poco tiempo. Espera un momento antes de volver a intentarlo.",
+        "registration_rate_limited_with_time": "Demasiados intentos en poco tiempo. Vuelve a intentarlo después de %(timeout)s."
     },
     "bug_reporting": {
         "additional_context": "Si hay algún contexto adicional que ayude a analizar el problema, como por ejemplo lo que estaba haciendo en ese momento, nombre (ID) de sala, nombre (ID) de usuario, etc., por favor incluye esas cosas aquí.",
@@ -579,7 +581,8 @@
         "view_message": "Ver mensaje",
         "warning": "Advertencia",
         "disabled_by_homeserver": "Deshabilitado por el servidor base",
-        "state_encryption_enabled": "Cifrado experimental de estado habilitado"
+        "state_encryption_enabled": "Cifrado experimental de estado habilitado",
+        "legacy_voice_and_video_settings": "Llamadas 1:1 de Matrix (heredadas)"
     },
     "composer": {
         "autocomplete": {
@@ -2235,7 +2238,8 @@
         "warning_kind_files": "Esta versión de %(brand)s no permite ver algunos archivos cifrados",
         "warning_kind_files_app": "Usa la <a>aplicación de escritorio</a> para ver todos los archivos cifrados",
         "warning_kind_search": "Esta versión de %(brand)s no puede buscar mensajes cifrados",
-        "warning_kind_search_app": "Usa la <a>aplicación de escritorio</a> para buscar en los mensajes cifrados"
+        "warning_kind_search_app": "Usa la <a>aplicación de escritorio</a> para buscar en los mensajes cifrados",
+        "warning_kind_search_partial": "Los resultados pueden estar incompletos porque el índice de búsqueda todavía se está creando."
     },
     "setting": {
         "help_about": {
@@ -2772,7 +2776,12 @@
             "dialog_title": "<strong>Configuración:</strong> Voz y video",
             "echo_cancellation_description": "Elimina el eco de la entrada del micrófono durante las llamadas. Esta configuración también se aplica a las llamadas de conferencia.",
             "enable_fallback_ice_server": "Permitir servidor de asistencia de llamadas de respaldo (%(server)s)",
-            "noise_suppression_description": "Reduce el ruido de fondo en la entrada del micrófono durante las llamadas. Esta configuración también se aplica a las llamadas de conferencia."
+            "noise_suppression_description": "Reduce el ruido de fondo en la entrada del micrófono durante las llamadas. Esta configuración también se aplica a las llamadas de conferencia.",
+            "enable_legacy_calls": "Activar llamadas de voz/video heredadas",
+            "enable_legacy_calls_description": "Aplica a llamadas Jitsi y llamadas WebRTC 1:1",
+            "permissions": "Permitir el acceso al micrófono y a la cámara",
+            "voice_input_description": "La entrada de audio configurada aquí se usa para mensajes de voz y llamadas (heredadas/1:1).",
+            "voice_input_section": "Entrada de audio"
         },
         "warn_quit": "Pedir confirmación antes de salir",
         "warning": "<w>ADVERTENCIA :</w> <description/>",
@@ -2812,7 +2821,8 @@
             "label": "Abrir %(brand)s cuando inicies sesión en tu computadora",
             "minimised": "Minimizado"
         },
-        "tac_only_notifications": "Mostrar las notificaciones solo en el centro de actividad de hilos"
+        "tac_only_notifications": "Mostrar las notificaciones solo en el centro de actividad de hilos",
+        "show_sections": "Mostrar secciones"
     },
     "share": {
         "permalink_message": "Enlazar al mensaje seleccionado",
@@ -3927,5 +3937,8 @@
         "tagline_element": "Potenciado para mayor velocidad y simplicidad.",
         "title_element": "Siéntete en tu elemento",
         "title_generic": "Te damos la bienvenida a %(brand)s"
+    },
+    "user_status": {
+        "on_a_call": "En una llamada"
     }
 }
