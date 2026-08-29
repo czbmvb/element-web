@@ -272,7 +272,6 @@ jobs:
                   Import-Certificate -CertStoreLocation Cert:\LocalMachine\Root -FilePath .github/SSLcom-sandbox.crt
 
             - name: Check app was signed successfully
-
               if: inputs.sign != ''  # GSPCOMS: build sin firma
               working-directory: apps/desktop
               run: |

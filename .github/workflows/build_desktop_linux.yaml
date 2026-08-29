@@ -244,7 +244,7 @@ jobs:
               if: contains(inputs.targets, 'tar.gz')
               working-directory: apps/desktop
               run: |
-                  test -f ./dist/element-desktop*.tar.gz
+                  test -f ./dist/*.tar.gz  # GSPCOMS: nuestro paquete no se llama element-desktop
 
                   TAR_GZ_LISTING=$(tar -tvf ./dist/element-desktop*.tar.gz)
                   echo "tar.gz listing: "
