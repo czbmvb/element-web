@@ -250,7 +250,7 @@ export default function UserSettingsDialog(props: IProps): JSX.Element {
                 _td("gspcoms_whatsapp|title"),
                 <ChatIcon />,
                 <WhatsAppUserSettingsTab />,
-                "UserSettingsWhatsApp",
+                undefined, // sin nombre de pantalla para analítica
             ),
         );
         tabs.push(
