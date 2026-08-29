@@ -205,7 +205,6 @@ jobs:
                   TARGET: ${{ steps.config.outputs.target }}
 
             - name: Install and configure eSigner CKA
-
               if: inputs.sign != ''  # GSPCOMS: sin certificado no firmamos (upstream firmaba con el sandbox demo de eSigner)
               run: |
                   Set-StrictMode -Version 'Latest'
@@ -273,6 +272,8 @@ jobs:
                   Import-Certificate -CertStoreLocation Cert:\LocalMachine\Root -FilePath .github/SSLcom-sandbox.crt
 
             - name: Check app was signed successfully
+
+              if: inputs.sign != ''  # GSPCOMS: build sin firma
               working-directory: apps/desktop
               run: |
                   Set-StrictMode -Version 'Latest'
