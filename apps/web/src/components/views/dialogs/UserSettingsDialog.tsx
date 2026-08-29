@@ -23,6 +23,7 @@ import LockIcon from "@vector-im/compound-design-tokens/assets/web/icons/lock";
 import LabsIcon from "@vector-im/compound-design-tokens/assets/web/icons/labs";
 import BlockIcon from "@vector-im/compound-design-tokens/assets/web/icons/block";
 import HelpIcon from "@vector-im/compound-design-tokens/assets/web/icons/help";
+import ChatIcon from "@vector-im/compound-design-tokens/assets/web/icons/chat";
 import { ToastContext, useActiveToast } from "@element-hq/web-shared-components";
 
 import TabbedView, { Tab, useActiveTabWithDefault } from "../../structures/TabbedView";
@@ -36,6 +37,7 @@ import NotificationUserSettingsTab from "../settings/tabs/user/NotificationUserS
 import PreferencesUserSettingsTab from "../settings/tabs/user/PreferencesUserSettingsTab";
 import VoiceUserSettingsTab from "../settings/tabs/user/VoiceUserSettingsTab";
 import HelpUserSettingsTab from "../settings/tabs/user/HelpUserSettingsTab";
+import WhatsAppUserSettingsTab from "../settings/tabs/user/WhatsAppUserSettingsTab";
 import MjolnirUserSettingsTab from "../settings/tabs/user/MjolnirUserSettingsTab";
 import { UIFeature } from "../../../settings/UIFeature";
 import BaseDialog from "./BaseDialog";
@@ -93,6 +95,8 @@ function titleForTabID(tabId: UserTab): React.ReactNode {
             return _t("settings|labs_mjolnir|dialog_title", undefined, subs);
         case UserTab.Help:
             return _t("setting|help_about|dialog_title", undefined, subs);
+        case UserTab.WhatsApp:
+            return _t("gspcoms_whatsapp|dialog_title", undefined, subs);
     }
 }
 
@@ -239,6 +243,16 @@ export default function UserSettingsDialog(props: IProps): JSX.Element {
                 ),
             );
         }
+        // GSPCOMS: conectar WhatsApp (puente mautrix)
+        tabs.push(
+            new Tab(
+                UserTab.WhatsApp,
+                _td("gspcoms_whatsapp|title"),
+                <ChatIcon />,
+                <WhatsAppUserSettingsTab />,
+                "UserSettingsWhatsApp",
+            ),
+        );
         tabs.push(
             new Tab(
                 UserTab.Help,

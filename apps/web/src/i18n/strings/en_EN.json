@@ -4080,5 +4080,24 @@
             "userInputs": "There should not be any personal or page related data.",
             "wordByItself": "A word by itself is easy to guess"
         }
+    },
+    "gspcoms_whatsapp": {
+        "title": "WhatsApp",
+        "dialog_title": "%(brand)s Settings: WhatsApp",
+        "section": "Your WhatsApp accounts",
+        "intro": "Connect your WhatsApp to see and reply to your WhatsApp chats from here. Your chats will show up on all your devices.",
+        "none": "You have not connected any WhatsApp yet.",
+        "connect": "Connect WhatsApp",
+        "disconnect": "Disconnect",
+        "state_connected": "Connected",
+        "state_disconnected": "Disconnected",
+        "starting": "Preparing the link with WhatsApp…",
+        "scan_hint": "On your phone open WhatsApp → Linked devices → Link a device, and scan this code.",
+        "code_hint": "In WhatsApp go to Linked devices → Link with phone number and enter this code:",
+        "waiting": "Waiting for WhatsApp to confirm…",
+        "success": "Done! Your WhatsApp chats will appear in a few moments.",
+        "error": "Could not connect with the WhatsApp bridge: %(message)s",
+        "timeout": "Timed out waiting for WhatsApp. Try again.",
+        "unsupported_step": "Unsupported step: %(type)s"
     }
 }

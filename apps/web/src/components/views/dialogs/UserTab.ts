@@ -19,5 +19,6 @@ export enum UserTab {
     Labs = "USER_LABS_TAB",
     Mjolnir = "USER_MJOLNIR_TAB",
     Help = "USER_HELP_TAB",
+    WhatsApp = "USER_WHATSAPP_TAB", // GSPCOMS: puente WhatsApp
     SessionManager = "USER_SESSION_MANAGER_TAB",
 }

@@ -3940,5 +3940,24 @@
     },
     "user_status": {
         "on_a_call": "En una llamada"
+    },
+    "gspcoms_whatsapp": {
+        "title": "WhatsApp",
+        "dialog_title": "Ajustes de %(brand)s: WhatsApp",
+        "section": "Tus cuentas de WhatsApp",
+        "intro": "Conecta tu WhatsApp para ver y responder tus chats de WhatsApp desde aquí. Tus chats aparecerán en todos tus dispositivos.",
+        "none": "Aún no has conectado ningún WhatsApp.",
+        "connect": "Conectar WhatsApp",
+        "disconnect": "Desconectar",
+        "state_connected": "Conectado",
+        "state_disconnected": "Desconectado",
+        "starting": "Preparando la vinculación con WhatsApp…",
+        "scan_hint": "En tu teléfono abre WhatsApp → Dispositivos vinculados → Vincular un dispositivo, y escanea este código.",
+        "code_hint": "En WhatsApp entra a Dispositivos vinculados → Vincular con número de teléfono y escribe este código:",
+        "waiting": "Esperando a que WhatsApp confirme…",
+        "success": "¡Listo! Tus chats de WhatsApp aparecerán en unos momentos.",
+        "error": "No se pudo conectar con el puente de WhatsApp: %(message)s",
+        "timeout": "Se agotó el tiempo de espera de WhatsApp. Intenta de nuevo.",
+        "unsupported_step": "Paso no soportado: %(type)s"
     }
 }
