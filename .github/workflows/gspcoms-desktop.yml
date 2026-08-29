@@ -1,0 +1,105 @@
+name: GSPCOMS Chat Desktop
+
+# Build propio del chat de escritorio: compila NUESTRO element-web (rebrand) y se lo
+# entrega a los workflows de escritorio de upstream via `webapp-artifact`, para que el
+# instalador no descargue el Element oficial. Sin firma (no hay certificados).
+on:
+  workflow_dispatch:
+    inputs:
+      windows:
+        description: "Compilar Windows (x64)"
+        type: boolean
+        default: true
+      linux:
+        description: "Compilar Linux (amd64 deb + tar.gz)"
+        type: boolean
+        default: true
+      macos:
+        description: "Compilar macOS (dmg sin firmar)"
+        type: boolean
+        default: true
+
+permissions: {}
+
+jobs:
+  web:
+    name: Build GSPCOMS Chat Web
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: "lts/*"
+          cache: pnpm
+
+      - name: Install Deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build webapp (GSPCOMS)
+        run: pnpm --filter element-web build
+        env:
+          RIOT_OG_IMAGE_URL: https://chat.gspcoms.net/themes/element/img/logos/opengraph.png
+
+      - name: Drop source maps
+        run: find apps/web/webapp -name '*.map' -delete
+
+      - name: Upload webapp
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: gspcoms-webapp
+          path: apps/web/webapp
+          retention-days: 14
+
+  prepare:
+    name: Prepare desktop
+    needs: web
+    uses: ./.github/workflows/build_desktop_prepare.yaml
+    permissions:
+      contents: read
+    with:
+      config: element.io/release
+      version: develop
+      nightly: false
+      deploy: false
+      webapp-artifact: gspcoms-webapp
+
+  windows:
+    if: inputs.windows
+    needs: prepare
+    name: Windows x64
+    uses: ./.github/workflows/build_desktop_windows.yaml
+    permissions:
+      contents: read
+    with:
+      arch: x64
+      test: false
+      artifact-prefix: gspcoms-
+
+  linux:
+    if: inputs.linux
+    needs: prepare
+    name: Linux amd64
+    uses: ./.github/workflows/build_desktop_linux.yaml
+    permissions:
+      contents: read
+    with:
+      arch: amd64
+      sqlcipher: static
+      test: false
+      artifact-prefix: gspcoms-
+
+  macos:
+    if: inputs.macos
+    needs: prepare
+    name: macOS (sin firma)
+    uses: ./.github/workflows/build_desktop_macos.yaml
+    permissions:
+      contents: read
+    with:
+      test: false
+      artifact-prefix: gspcoms-
