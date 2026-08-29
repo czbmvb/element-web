@@ -4,6 +4,10 @@ name: GSPCOMS Chat Desktop
 # entrega a los workflows de escritorio de upstream via `webapp-artifact`, para que el
 # instalador no descargue el Element oficial. Sin firma (no hay certificados).
 on:
+  # push: GitHub solo registra el workflow (y permite workflow_dispatch) cuando ya corrio en la rama
+  push:
+    branches: [gspcoms-1.12.26]
+    paths-ignore: ["**.md", "docs/**"]
   workflow_dispatch:
     inputs:
       windows:
@@ -69,7 +73,7 @@ jobs:
       webapp-artifact: gspcoms-webapp
 
   windows:
-    if: inputs.windows
+    if: github.event_name != 'workflow_dispatch' || inputs.windows
     needs: prepare
     name: Windows x64
     uses: ./.github/workflows/build_desktop_windows.yaml
@@ -81,7 +85,7 @@ jobs:
       artifact-prefix: gspcoms-
 
   linux:
-    if: inputs.linux
+    if: github.event_name != 'workflow_dispatch' || inputs.linux
     needs: prepare
     name: Linux amd64
     uses: ./.github/workflows/build_desktop_linux.yaml
@@ -94,7 +98,7 @@ jobs:
       artifact-prefix: gspcoms-
 
   macos:
-    if: inputs.macos
+    if: github.event_name != 'workflow_dispatch' || inputs.macos
     needs: prepare
     name: macOS (sin firma)
     uses: ./.github/workflows/build_desktop_macos.yaml
