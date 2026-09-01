@@ -1,0 +1,26 @@
+diff --git a/src/secret-storage.ts b/src/secret-storage.ts
+index 7b1ef8a42506aa727647be8d950c6b1ec60e3dd7..7bb4096d080cf96a2a0bcaf53d9d438b178fae73 100644
+--- a/src/secret-storage.ts
++++ b/src/secret-storage.ts
+@@ -371,6 +371,21 @@ export class ServerSideSecretStorageImpl implements ServerSideSecretStorage {
+      * Implementation of {@link ServerSideSecretStorage#setDefaultKeyId}.
+      */
+     public setDefaultKeyId(keyId: string | null): Promise<void> {
++        return (async () => {
++            // GSPCOMS fix (deadlock): si el valor ya es el pedido, setAccountData no manda nada
++            // al servidor (no-op) y el eco por /sync jamas llega -> la promesa quedaba colgada
++            // para siempre (p. ej. reset de identidad interrumpido que dejo default_key = {}).
++            const current = await this.accountDataAdapter.getAccountDataFromServer("m.secret_storage.default_key");
++            const alreadySet =
++                keyId === null
++                    ? !current || Object.keys(current).length === 0
++                    : (current as { key?: string } | null)?.key === keyId;
++            if (alreadySet) return;
++            await this.doSetDefaultKeyId(keyId);
++        })();
++    }
++
++    private doSetDefaultKeyId(keyId: string | null): Promise<void> {
+         return new Promise<void>((resolve, reject) => {
+             const listener = (ev: MatrixEvent): void => {
+                 if (ev.getType() !== "m.secret_storage.default_key") {
